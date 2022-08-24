@@ -7,10 +7,19 @@ import { ParticipateModule } from './participate/participate.module';
 import { GroupModule } from './group/group.module';
 import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
-
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
 @Module({
-  imports: [MessageModule, UserModule, ParticipateModule, GroupModule, AuthModule, DatabaseModule],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [
+        MessageModule,
+        UserModule,
+        ParticipateModule,
+        GroupModule,
+        AuthModule,
+        ConfigModule.forRoot(configuration),
+        DatabaseModule,
+    ],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}
