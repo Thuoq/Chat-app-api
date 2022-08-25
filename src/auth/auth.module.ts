@@ -4,7 +4,6 @@ import { AuthController } from './auth.controller';
 import {
    getDataSourceToken,
    getRepositoryToken,
-   InjectDataSource,
    TypeOrmModule,
 } from '@nestjs/typeorm';
 import User from '../user/user.entity';

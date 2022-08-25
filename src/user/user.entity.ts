@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import DateAuditEntity from '../utils/dateAudit.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity()
 class User extends DateAuditEntity {
@@ -13,7 +14,16 @@ class User extends DateAuditEntity {
       unique: true,
    })
    email: string;
-   @Column()
+   @Column({
+      select: false,
+   })
    password: string;
+   @BeforeInsert()
+   async hashPassword() {
+      this.password = await bcrypt.hash(
+         this.password,
+         parseInt(process.env.SALT),
+      );
+   }
 }
 export default User;
