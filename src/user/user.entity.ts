@@ -6,17 +6,13 @@ import * as bcrypt from 'bcrypt';
 class User extends DateAuditEntity {
    @PrimaryGeneratedColumn('uuid')
    id: string;
-   @Column({
-      unique: true,
-   })
+   @Column()
    userName: string;
    @Column({
       unique: true,
    })
    email: string;
-   @Column({
-      select: false,
-   })
+   @Column()
    password: string;
    @BeforeInsert()
    async hashPassword() {
