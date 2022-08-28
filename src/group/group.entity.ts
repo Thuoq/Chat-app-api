@@ -6,7 +6,9 @@ class Group extends BaseEntity {
    @PrimaryGeneratedColumn('uuid')
    id: string;
 
-   @Column()
+   @Column({
+      nullable: true,
+   })
    name?: string;
 
    @Column({
