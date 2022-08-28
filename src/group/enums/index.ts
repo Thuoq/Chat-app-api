@@ -1,0 +1,4 @@
+export enum GroupTYPE {
+   PRIVATE_PERSON_TO_PERSON = 1,
+   PRIVATE_PERSON_TO_GROUP = 2,
+}
